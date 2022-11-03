@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Weather</title>
+</head>
+<body>
+<div class="container">
+    <div class="row centered mt mb">
+        <div class="col-lg-8 col-lg-offset-2">
+            <h1>Let's find out the weather in any city in the world!</h1>
+            <form method="GET">
+                <label for="city"></label>
+                <input
+                        type="text"
+                        name="city"
+                        id="city"
+                        placeholder="enter the name of the city"
+                /><br/>
+                <p></p>
+                <input type="submit" class="btn btn-secondary" value="Find out the weather">
+            </form>
+            <br/>
+            <div class="response">
+
+                {% if context %}
+
+                <h3>{{ context.region }}</h3>
+                <h3>{{ context.time }}</h3>
+                <h3>{{ context.weather }}</h3>
+                <h3>Температура {{ context.temp_now }}</h3>
+                <h3>Ветер {{ context.wind }} м/с, {{ context.direction_of_wind }}</h3>
+
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
